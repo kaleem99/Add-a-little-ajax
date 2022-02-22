@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style type="text/css"></style>
+  </head>
+  <body>
+    <h1>Please Enter Your Details Below</h1>
+    <div class="divForm">
+      <form action="/" id="form1" method="POST">
+        <label for="VisitorName">Full name:</label><br />
+        <input
+          type="text"
+          id="VisitorName"
+          name="VisitorName"
+          value=""
+          required
+        /><br />
+
+        <label for="AssistentName">AssistedBy:</label><br />
+        <input
+          type="text"
+          id="AssistentName"
+          name="AssistentName"
+          value=""
+          required
+        /><br />
+
+        <label for="VisitorAge">Visitors Age:</label><br />
+        <input
+          type="number"
+          id="VisitorAge"
+          name="VisitorAge"
+          value=""
+          required
+        /><br />
+
+        <label for="DateOfVisit">Date Of Visit:</label><br />
+        <input
+          type="date"
+          id="DateOfVisit"
+          name="DateOfVisit"
+          value=""
+          required
+        /><br />
+
+        <label for="TimeOfVisit">Time Of Visit:</label><br />
+        <input
+          type="time"
+          id="TimeOfVisit"
+          name="TimeOfVisit"
+          value=""
+          required
+        /><br />
+
+        <label for="Comments">Comments:</label><br />
+        <input
+          type="text"
+          id="Comments"
+          name="Comments"
+          value=""
+          required
+        /><br /><br />
+
+        <input type="submit" value="Submit" id="addUser" />
+      </form>
+    </div>
+    <br /><br />
+    <h2 id="data">All users</h2>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Assisted By</th>
+        <th>Comments</th>
+        <th>update</th>
+        <th>delete</th>
+      </tr>
+      <% for(var i=0; i < data.length; i++) { %>
+      <tr>
+        <td><%= data[i].id %></td>
+        <td><%= data[i].name %></td>
+        <td><%= data[i].age %></td>
+        <td><%= data[i].dateofvisit.toLocaleDateString() %></td>
+        <td><%= data[i].timeofvisit %></td>
+        <td><%= data[i].assistedby %></td>
+        <td><%= data[i].comments %></td>
+        <td>
+          <button id="button<%= data[i].id %>" onclick="updateUserLink(id)">
+            <i
+              class="fas fa-pencil-alt"
+              style="font-size: 24px; color: #06d6a0"
+            ></i>
+          </button>
+        </td>
+        <td>
+          <button id="button<%= data[i].id %>" onclick="deleteUser(id)">
+            <i class="fas fa-trash-alt" style="font-size: 24px; color: red"></i>
+          </button>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+
+    <script>
+      function deleteUser(id) {
+        id = id.slice(6);
+        const request = {
+          url: `http://<%= link %>/${id}`,
+          method: "DELETE",
+        };
+        if (confirm("Do you really want to delete this record?")) {
+          $.ajax(request).done(function (response) {
+            alert("User Deleted Successfully!");
+          });
+          window.location.reload();
+        }
+      }
+      function updateUserLink(id) {
+        id = id.slice(6);
+        location.assign(`http://<%= link %>${id}`)
+      }
+    </script>
+  </body>
+</html>

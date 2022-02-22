@@ -1,0 +1,32 @@
+{
+  "name": "mohammed-kaleem-280-node-file-io-",
+  "version": "1.0.0",
+  "description": "Node & File IO (280) For raw project instructions see: https://raw.githubusercontent.com/Umuzi-org/tech-department/master/content/projects/nodejs/file-io/_index.md",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "jasmine": "^3.10.0",
+    "node-modules": "^0.0.1",
+    "nodemon": "^2.0.15",
+    "npm": "^8.1.4",
+    "path": "^0.12.7",
+    "pg": "^8.7.1"
+  },
+  "scripts": {
+    "test": "jasmine",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Umuzi-org/Mohammed-Kaleem-280-node-file-io-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Umuzi-org/Mohammed-Kaleem-280-node-file-io-/issues"
+  },
+  "homepage": "https://github.com/Umuzi-org/Mohammed-Kaleem-280-node-file-io-#readme"
+}
